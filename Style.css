@@ -85,6 +85,10 @@ body{
 	background: #fff;
 	width: 100%;
 	margin-bottom: 500px;
+	min-height: 660px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
 .section-title{	
 	text-align: center;
@@ -128,10 +132,16 @@ body{
 	margin: 0 auto;
 	display: block;
 	padding: 15px 30px;
-	transition: background .5s;
+	transition: background .5s, transform .5s, opacity .5s;
+	opacity: 0;
+	transform: translateY(30px);
 }
 	.section-button:hover{
 		background: #ffe900;
+	}
+	.section-button--showed{
+		opacity: 1;
+		transform: translateY(0);
 	}
 /************************HEADER**********************/
 .m-wrapper--header{
@@ -195,9 +205,23 @@ body{
 		}
 
 /*********************MAIN*************************/
-.m-wrapper__section--acknowleding{
-	padding: 140px 300px 80px;
+.m-section--workers{
+	width: 100%;
+	min-height: 865px;
+	background: url(Img/D2N8.jpg) no-repeat center center;
+	background-color: #F2F2F2;
+	align-items: flex-end;
 }
-.m-wrapper__section--who-we-are{
-	padding: 235px 300px 225px;
-}		
+.m-wrapper--workers{
+	display: flex;
+}
+.worker{
+	box-sizing: border-box;
+	width: 50%;
+	height: 100%;
+	border: 2px solid red;
+}
+	.worker__img{
+		width: 100%;
+		display: block;
+	}
