@@ -9,7 +9,6 @@ var headerAnim = function(delay){
 	function animeteBacground(){
 		var header = document.getElementsByClassName("b-header")[0];
 		header.style.background = "rgba(251,204,0,.0)";
-		//document.body.style.background = "black";
 	}
 
 	function animeteText(){
@@ -29,3 +28,42 @@ var headerAnim = function(delay){
 	}
 }
 headerAnim(2000);
+
+/********************************************************************/
+
+var sectionAnim = function(){
+	var titels = document.getElementsByClassName("section-title");
+	var descriptions = document.getElementsByClassName("section-desc");
+
+	window.addEventListener("scroll", function(e){
+		animeteSectionTitels(e);
+		animeteSectionDesc(e);
+	});
+
+	function animeteSectionTitels(e){
+		for(var i=0, len = titels.length; i<len; i++){
+			if(titels[i].classList.contains("section-title--showed")){
+				continue;
+			}else{
+				var cords = titels[i].getBoundingClientRect();
+				if(document.documentElement.clientHeight/2 >= cords.top){
+					titels[i].classList.add("section-title--showed");
+				}
+			}
+		}
+	}
+
+	function animeteSectionDesc(e){
+		for (var i = 0, len = descriptions.length; i<len; i++) {
+			if(descriptions[i].classList.contains("section-desc--showed")){
+				continue;
+			} else {
+				var cords = descriptions[i].getBoundingClientRect();
+				if(document.documentElement.clientHeight/2 >= cords.top){
+					descriptions[i].classList.add("section-desc--showed");
+				}
+			}
+		}
+	}
+}
+sectionAnim();
