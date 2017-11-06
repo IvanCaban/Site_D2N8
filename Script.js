@@ -27,7 +27,7 @@ var headerAnim = function(delay){
 		svgArrow.style.stroke = 'rgb(255,255,255)';
 	}
 }
-headerAnim(2000);
+headerAnim(1000);
 
 /********************************************************************/
 
@@ -92,3 +92,29 @@ var sectionAnim = function(){
 	}
 }
 sectionAnim();
+
+var workerSectionAnimate = function(){
+	var workerSection = document.querySelector(".m-wrapper--workers");
+	var workersImg = document.getElementsByClassName("worker__img");
+	var workersInf = document.getElementsByClassName("worker__inf");
+	var background = document.querySelector(".m-section--workers");
+
+	window.addEventListener("scroll", animeteWorkerSection);
+	
+	function animeteWorkerSection(){
+		if(document.documentElement.clientHeight/2 >= workerSection.getBoundingClientRect().top){
+			for (var i = 0, len = workersImg.length; i<len; i++) {
+				workersImg[i].classList.add("m-worker__img--showed");		
+			}
+
+			for (var i = 0, len = workersInf.length; i < len; i++) {
+				workersInf[i].classList.add("m-worker__inf--showed");
+			}
+
+			background.classList.add("m-section--workers--showed");
+			
+			window.removeEventListener("scroll", animeteWorkerSection);
+		}
+	}
+}
+workerSectionAnimate();
