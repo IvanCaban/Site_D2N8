@@ -102,7 +102,7 @@ var workerSectionAnimate = function(){
 	window.addEventListener("scroll", animeteWorkerSection);
 	
 	function animeteWorkerSection(){
-		if(document.documentElement.clientHeight/2 >= workerSection.getBoundingClientRect().top){
+		if(document.documentElement.clientHeight * 0.25 >= workerSection.getBoundingClientRect().top){
 			for (var i = 0, len = workersImg.length; i<len; i++) {
 				workersImg[i].classList.add("m-worker__img--showed");		
 			}
@@ -118,3 +118,66 @@ var workerSectionAnimate = function(){
 	}
 }
 workerSectionAnimate();
+
+var footerAnim = function(){
+	var benefit = document.getElementsByClassName("benefit");
+	var allAnimElements = benefit.length;
+	var counter = 0;
+
+	window.addEventListener("scroll", animeteBenefits);
+	
+
+	function animeteBenefits(){
+		for (var i = 0, len = benefit.length; i < len; i++) {
+			if(benefit[i].classList.contains("m-benefit--showed")){
+				continue;
+			} else {
+				var cords = benefit[i].getBoundingClientRect();
+				if(document.documentElement.clientHeight * 0.75 > cords.top){
+					benefit[i].classList.add("m-benefit--showed");
+					counter++;
+				}
+			}
+		}
+		if(counter >= allAnimElements){
+			window.removeEventListener("scroll", animeteBenefits);
+		}
+	}
+}
+footerAnim();
+
+var showDetailWorkersInf = function(){
+	var workers = document.getElementsByClassName("worker");
+	var workersDetailInf = document.querySelector(".worker__detait-inf");
+	var closeBtn = document.querySelector(".worker__detait-inf__close-btn");
+	var detailInfIgor = document.querySelector(".worker__detait-inf--igor");
+	var detailInfNatasha = document.querySelector(".worker__detait-inf--natasha");
+	for (var i = 0, len = workers.length; i < len; i++) {
+		workers[i].addEventListener("click", showWorkerInfo);
+	}
+	closeBtn.addEventListener("click", hideWorkerInfo);
+
+	function showWorkerInfo(){
+		
+		switch(this.dataset.workerName){
+			case "natasha":
+				detailInfNatasha.classList.add("m-worker__detait-inf--natasha--showed");
+				break;
+			case "igor":		
+				detailInfIgor.classList.add("m-worker__detait-inf--igor--showed");
+				break;
+
+		}
+		workersDetailInf.classList.add("m-worker__detait-inf--showed");
+		closeBtn.classList.add("m-worker__detait-inf__close-btn--showed");
+	}
+
+	function hideWorkerInfo(){
+		workersDetailInf.classList.remove("m-worker__detait-inf--showed");
+		closeBtn.classList.remove("m-worker__detait-inf__close-btn--showed");
+		detailInfNatasha.classList.remove("m-worker__detait-inf--natasha--showed");
+		detailInfIgor.classList.remove("m-worker__detait-inf--igor--showed");
+	}
+
+}
+showDetailWorkersInf();
