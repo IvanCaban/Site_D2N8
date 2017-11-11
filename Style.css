@@ -231,20 +231,27 @@ body{
 	height: 100%;
 	align-self: flex-end;
 	position: relative;
-	overflow: hidden;
+
 	padding: 30px 10px 0;
 	z-index: 200;
+	transition: transform .5s, opacity .5s;	
+
 }
 	.m-worker--natasha{
 		margin-right: 55px;
 	}
+		.m-hatasha-hide, .m-igor-hide{
+			opacity: 0;
+		}
 	.m-worker--igor{
 		margin-left: 55px;
 	}
+
 	.worker__img{
 		width: 100%;
 		display: block;
 		transition: transform .5s;
+		transform-origin: bottom;
 	}
 	.worker:hover>.worker__img{
 		transform: scale(1.1);
@@ -257,10 +264,18 @@ body{
 			opacity: 0;
 			transform: translateX(150px);
 		}
+		.m-worker__img--igor--showed-with-detail{
+			transform: scale(1.1) translateX(-100px) !important; 
+
+		}
+		.m-worker__img--hatasha--showed-with-detail{
+			transform: scale(1.1) translateX(100px) !important;
+		}
 		.m-worker__img--showed{
 			transform: translateX(0);
 			opacity: 1;
 		}
+			
 	.worker__inf{
 		position: absolute;
 		bottom: 100px;
@@ -284,8 +299,14 @@ body{
 			.m-worker__inf--natasha{
 				right: 150px;
 			}
+			.m-worker__inf--natasha--showed-with-detail{
+				transform: translateX(100px);
+			}
 			.m-worker__inf--igor{
 				left: 150px;
+			}
+			.m-worker__inf--igor--showed-with-detail{
+				transform: translateX(-100px);
 			}
 				.m-worker__inf__name--igor{
 					color: #FBCC00;
@@ -351,7 +372,7 @@ body{
 					transition: transform .5s, opacity .5s;
 					cursor: pointer;
 					opacity: 0;
-					z-index: 250;
+					z-index: 350;
 				}
 				.worker__detait-inf__close-btn:hover{
 					transform: scale(1.1);

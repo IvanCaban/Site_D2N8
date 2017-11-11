@@ -150,21 +150,34 @@ var showDetailWorkersInf = function(){
 	var workers = document.getElementsByClassName("worker");
 	var workersDetailInf = document.querySelector(".worker__detait-inf");
 	var closeBtn = document.querySelector(".worker__detait-inf__close-btn");
+	
+	var igor = document.querySelector(".m-worker--igor");
+	var igorImg = document.querySelector(".m-worker__img--igor");
+	var igorInfo = document.querySelector(".m-worker__inf--igor");
 	var detailInfIgor = document.querySelector(".worker__detait-inf--igor");
-	var detailInfNatasha = document.querySelector(".worker__detait-inf--natasha");
+	
+
+	var natasha = document.querySelector(".m-worker--natasha"); 
+	var natashaImg = document.querySelector(".m-worker__img--natasha");
+	var natashaInfo = document.querySelector(".m-worker__inf--natasha");
+	var natashaDetailInfo = document.querySelector(".worker__detait-inf--natasha"); 
+
+	
 	for (var i = 0, len = workers.length; i < len; i++) {
 		workers[i].addEventListener("click", showWorkerInfo);
 	}
 	closeBtn.addEventListener("click", hideWorkerInfo);
 
+
+	workersDetailInf.style.pointerEvents = "none";
 	function showWorkerInfo(){
-		
+		workersDetailInf.style.pointerEvents = "auto";
 		switch(this.dataset.workerName){
 			case "natasha":
-				detailInfNatasha.classList.add("m-worker__detait-inf--natasha--showed");
+				showNatashaDetailInfo();
 				break;
-			case "igor":		
-				detailInfIgor.classList.add("m-worker__detait-inf--igor--showed");
+			case "igor":
+				showIgorDetailInfo();
 				break;
 
 		}
@@ -175,9 +188,50 @@ var showDetailWorkersInf = function(){
 	function hideWorkerInfo(){
 		workersDetailInf.classList.remove("m-worker__detait-inf--showed");
 		closeBtn.classList.remove("m-worker__detait-inf__close-btn--showed");
-		detailInfNatasha.classList.remove("m-worker__detait-inf--natasha--showed");
-		detailInfIgor.classList.remove("m-worker__detait-inf--igor--showed");
+		workersDetailInf.style.pointerEvents = "none";
+		
+
+		if(igor.classList.contains("m-igor-hide")){
+			hideNatashaDetailInfo();
+		}
+		if(natasha.classList.contains("m-hatasha-hide")){
+			hideIgorDetailInfo();
+		}
+				
 	}
 
-}
+	function showNatashaDetailInfo(){
+		natashaDetailInfo.classList.add("m-worker__detait-inf--natasha--showed");
+		igor.style.pointerEvents = "none";
+		igor.classList.add("m-igor-hide");
+		natashaImg.classList.add("m-worker__img--hatasha--showed-with-detail");
+		natashaInfo.classList.add("m-worker__inf--natasha--showed-with-detail");
+		natasha.style.pointerEvents = "none";	
+	}
+	function hideNatashaDetailInfo(){
+		natashaDetailInfo.classList.remove("m-worker__detait-inf--natasha--showed");
+		igor.classList.remove("m-igor-hide");
+		igor.style.pointerEvents = "auto";
+		natashaImg.classList.remove("m-worker__img--hatasha--showed-with-detail");
+		natashaInfo.classList.remove("m-worker__inf--natasha--showed-with-detail");
+		natasha.style.pointerEvents = "auto";	
+	}
+
+	function showIgorDetailInfo(){
+		natasha.classList.add("m-hatasha-hide");
+		natasha.style.pointerEvents = "none";		
+		detailInfIgor.classList.add("m-worker__detait-inf--igor--showed");
+		igorImg.classList.add("m-worker__img--igor--showed-with-detail");
+		igorInfo.classList.add("m-worker__inf--igor--showed-with-detail");
+		igor.style.pointerEvents = "none";
+	}
+	function hideIgorDetailInfo(){
+		detailInfIgor.classList.remove("m-worker__detait-inf--igor--showed");
+		igorImg.classList.remove("m-worker__img--igor--showed-with-detail");
+		natasha.style.pointerEvents = "auto";
+		natasha.classList.remove("m-hatasha-hide");
+		igorInfo.classList.remove("m-worker__inf--igor--showed-with-detail");
+		igor.style.pointerEvents = "auto";
+	}
+}	
 showDetailWorkersInf();
