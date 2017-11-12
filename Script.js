@@ -55,7 +55,7 @@ var sectionAnim = function(){
 				continue;
 			}else{
 				var cords = titels[i].getBoundingClientRect();
-				if(document.documentElement.clientHeight/2 >= cords.top){
+				if(document.documentElement.clientHeight * 0.75 >= cords.top){
 					titels[i].classList.add("section-title--showed");
 					counter++;
 				}
@@ -69,7 +69,7 @@ var sectionAnim = function(){
 				continue;
 			} else {
 				var cords = descriptions[i].getBoundingClientRect();
-				if(document.documentElement.clientHeight/2 >= cords.top){
+				if(document.documentElement.clientHeight * 0.75 >= cords.top){
 					descriptions[i].classList.add("section-desc--showed");
 					counter++;
 				}
@@ -83,7 +83,7 @@ var sectionAnim = function(){
 				continue;
 			} else {
 				var cords = buttons[i].getBoundingClientRect();
-				if(document.documentElement.clientHeight/2 >= cords.top){
+				if(document.documentElement.clientHeight * 0.75 >= cords.top){
 					buttons[i].classList.add("section-button--showed");
 					counter++;
 				}
