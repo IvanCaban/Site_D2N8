@@ -1,24 +1,43 @@
 var headerAnim = function(delay){
 	
-	setTimeout(function(){
-		animeteText();
-		animeteSvg();
-		animeteBacground();
-	}, delay);
+	setTimeout(animeteLogo, (delay/2)*0.25);
+	setTimeout(animeteSupTitle, (delay/2)*0.5);
+	setTimeout(animeteSubTitle, (delay/2)*0.75);
+	setTimeout(animeteHeaderColor, delay);
 
-	function animeteBacground(){
+	function animeteLogo(){
+		var logo = document.querySelector(".b-header__logo");
+		logo.classList.add("m-header__logo--showed");
+	}
+
+	function animeteSupTitle(){
+		var supTitle = document.querySelector(".m-header__title--sup");
+		supTitle.classList.add("m-header__title--sup--showed");
+	}
+	
+	function animeteSubTitle(){
+		var subTitle = document.querySelector(".m-header__title--sub");
+		subTitle.classList.add("m-header__title--sub--showed");
+	}
+	function animeteHeaderColor(){
+		animeteTextColor();
+		animeteSvgColor();
+		animeteBacgroundColor();
+	}
+
+	function animeteBacgroundColor(){
 		var header = document.getElementsByClassName("b-header")[0];
 		header.style.background = "rgba(251,204,0,.0)";
 	}
 
-	function animeteText(){
+	function animeteTextColor(){
 		var textAnim = document.getElementsByClassName("m-header--anim-text");
 		for(var i=0, len = textAnim.length; i<len ;i++){
 			textAnim[i].style.color = "rgb(255,255,255)";
 		}
 	}
 
-	function animeteSvg(){
+	function animeteSvgColor(){
 		var svgLogo = document.getElementsByClassName("m-header--anim-svg");
 		for(var i=0, len = svgLogo.length; i<len; i++){
 			svgLogo[i].style.fill = "rgb(255,255,255)";
@@ -27,7 +46,7 @@ var headerAnim = function(delay){
 		svgArrow.style.stroke = 'rgb(255,255,255)';
 	}
 }
-headerAnim(1000);
+headerAnim(2000);
 
 /********************************************************************/
 
