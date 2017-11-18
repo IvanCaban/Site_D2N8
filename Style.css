@@ -66,6 +66,9 @@ body{
 	font-family: AA-BebasNeue;
 	font-size: 16px;
 }
+main{
+	overflow: hidden;
+}
 #background-video{
 	position: fixed;
   	min-width: 100%; 
@@ -287,6 +290,11 @@ body{
     height: 60px;
     background-color: #000;
 }
+	.m-section-nav-fixed{
+		position: fixed;
+		top: 0;
+		z-index: 9999;
+	}
 	#open-close{
 		display: none;
 	}
@@ -311,7 +319,12 @@ body{
 		top: 20px;
 		left: -49px;
 		cursor: pointer;
+		transition: transform .5s;
+		transform: translateX(50px);
 	}
+		.m-section-nav__open-close--showed{
+			transform: translateX(0);
+		}
 		.section-nav__open-close__line{
 			width: 35px;
 			height: 3px;
@@ -366,6 +379,10 @@ body{
 		box-sizing: border-box;
 	}
 		.section-nav__navigation__list__li:hover{
+			color: #fbcc00;
+			text-decoration: underline;
+		}
+		.m-section-nav__navigation__list__li--selected{
 			color: #fbcc00;
 		}
 .m-section--workers{
@@ -837,7 +854,7 @@ body{
 		align-items: center;
 		width: 200px;
 		height: 100%;
-		padding: 30px 0;
+		padding: 0px 0 30px;
 	}
 	.section-nav__logo{
 		width: 200px;
