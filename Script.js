@@ -163,7 +163,7 @@ var workerDetailInf = function(){
 		natashaCloseBtn.classList.add("m-worker__open-close--opened-natasha");
 		igorCloseBtn.classList.add("m-worker__open-close--hide");
 		if(document.documentElement.clientHeight <= 768){
-			offScrollBody();
+			//offScrollBody();
 			document.querySelector(".m-section--workers").scrollIntoView(true);
 		}
 		
